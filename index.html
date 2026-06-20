@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Form Validation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .validation-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 6px;
+            color: #0f172a;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .form-control-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Error Text Label Wrapper */
+        .error-msg {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        /* Dynamic Input State Classes mapped via JS */
+        .invalid-state input {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2;
+        }
+
+        .invalid-state .error-msg {
+            display: block;
+        }
+
+        .valid-state input {
+            border-color: #22c55e;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 14px;
+            background-color: #3b82f6;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-register:hover {
+            background-color: #2563eb;
+        }
+
+        .toast-banner {
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 14px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="validation-card">
+        <div class="toast-banner" id="success-toast">
+            Account validation verified and submitted!
+        </div>
+
+        <h2>Create Account</h2>
+        <p class="desc">Please fill out the details below to complete setup registration.</p>
+
+        <form id="registration-form" novalidate>
+            <div class="form-control-group" id="username-container">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Min 4 characters">
+                <div class="error-msg">Username must be at least 4 characters long.</div>
+            </div>
+
+            <div class="form-control-group" id="email-container">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="you@domain.com">
+                <div class="error-msg">Please enter a valid structured email address.</div>
+            </div>
+
+            <div class="form-control-group" id="password-container">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Min 6 characters">
+                <div class="error-msg">Password must be at least 6 characters long.</div>
+            </div>
+
+            <button type="submit" class="btn-register">Register</button>
+        </form>
+    </div>
+
+    <script src="validation.js"></script>
+</body>
+</html>
